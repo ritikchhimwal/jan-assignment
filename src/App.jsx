@@ -132,35 +132,111 @@ import { Audio } from "react-loader-spinner";
 //   );
 // };
 
+// const PincodeLookup = () => {
+//   const handleOpenLink = () => {
+//     window.location.href =
+//       "https://onehubuk.com/create_visit?visitType=Assisted+Sales&partnerName=Media-Saturn+Deutschland+GmbH+%28MSD%29&storeName=S073+-+Saturn+Hanau&date=2026-06-04&startTime=10:00&endTime=11:30&tier=Gold&location=Hanau+City+Center&lat=50.1328&lng=8.9169&city=Hanau";
+//   };
+
+//   return (
+//     <div
+//       style={{
+//         display: "flex",
+//         justifyContent: "center",
+//         alignItems: "center",
+//         height: "100vh",
+//       }}
+//     >
+//       <button
+//         onClick={handleOpenLink}
+//         style={{
+//           padding: "12px 24px",
+//           fontSize: "16px",
+//           cursor: "pointer",
+//           borderRadius: "8px",
+//           border: "none",
+//           backgroundColor: "#007bff",
+//           color: "#fff",
+//         }}
+//       >
+//         Open Visit Page
+//       </button>
+//     </div>
+//   );
+// };
+
 const PincodeLookup = () => {
-  const handleOpenLink = () => {
-    window.location.href =
-      "https://onehubuk.com/create_visit?visitType=Assisted+Sales&partnerName=Media-Saturn+Deutschland+GmbH+%28MSD%29&storeName=S073+-+Saturn+Hanau&date=2026-06-04&startTime=10:00&endTime=11:30&tier=Gold&location=Hanau+City+Center&lat=50.1328&lng=8.9169&city=Hanau";
-  };
+  const [showIframe, setShowIframe] = useState(false);
+
+  const url =
+    "https://onehubuk.com/create_visit?visitType=Assisted+Sales&partnerName=Media-Saturn+Deutschland+GmbH+%28MSD%29&storeName=S073+-+Saturn+Hanau&date=2026-06-04&startTime=10:00&endTime=11:30&tier=Gold&location=Hanau+City+Center&lat=50.1328&lng=8.9169&city=Hanau";
 
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         height: "100vh",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      <button
-        onClick={handleOpenLink}
+      {/* Dummy Header */}
+      <div
         style={{
-          padding: "12px 24px",
-          fontSize: "16px",
-          cursor: "pointer",
-          borderRadius: "8px",
-          border: "none",
-          backgroundColor: "#007bff",
+          height: "60px",
+          background: "#0f172a",
           color: "#fff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 20px",
+          fontSize: "18px",
+          fontWeight: "bold",
         }}
       >
-        Open Visit Page
-      </button>
+        Dummy Header
+
+        <button
+          onClick={() => setShowIframe(true)}
+          style={{
+            padding: "10px 18px",
+            border: "none",
+            borderRadius: "6px",
+            cursor: "pointer",
+            background: "#2563eb",
+            color: "#fff",
+            fontWeight: "600",
+          }}
+        >
+          Open Visit Page
+        </button>
+      </div>
+
+      {/* Page Content */}
+      <div style={{ flex: 1 }}>
+        {showIframe ? (
+          <iframe
+            src={url}
+            title="Visit Page"
+            style={{
+              width: "100%",
+              height: "100%",
+              border: "none",
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              fontSize: "20px",
+            }}
+          >
+            Click the button to open the page
+          </div>
+        )}
+      </div>
     </div>
   );
 };
